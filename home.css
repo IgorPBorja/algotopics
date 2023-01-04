@@ -1,0 +1,42 @@
+html, body{
+    width: 100%;
+    height: 100%;
+}
+#home-top-menu{
+    display: flex; /* make it flexbox*/
+    align-items: center; /* vertically align at center*/
+    width: 100%;
+    height: 20px;
+    /* background-image: ; */
+}
+
+#home-top-menu > * {
+    /* https: //stackoverflow.com/questions/6507014/how-to-space-the-children-of-a-div-with-css */
+    /* separate all children of home-top-menu divs*/
+    display: block;
+    margin: 10px;
+}
+
+#home-top-button{
+    background-color: grey;
+    width: 20%;
+    border: 3px solid black;
+}
+
+/* Make images fit inside div while preserving aspect ration */
+div > img{
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%; /* to be contained inside div*/
+}
+/* Make all images inside buttons fit inside the button's parent div while preserving aspect ration */
+div > button > img{
+    width: auto;
+    height: auto;
+    max-height: 100%;
+    max-width: 100%;
+    /* to be contained inside div*/
+}
+
+
