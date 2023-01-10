@@ -1,0 +1,30 @@
+body {
+  /* Reset the counter named theorem each time a body obj is instantiated*/
+  counter-reset: theorem;
+  counter-reset: claim;
+}
+h1 {
+  /* Reset the counter named theorem each time a h1 obj is instantiated*/
+  counter-reset: theorem;
+  counter-reset: claim;
+  margin-top: 5%;
+  border-top: double 3px black;
+  border-bottom: double 3px black;
+}
+
+p.theorem::before {
+  counter-increment: theorem;
+  content: "Teorema " counter(theorem) " \2014 ";
+}
+p.theorem[data-attribution]::before {
+  content: "Teorema " counter(theorem) " (" attr(data-attribution) ")  \2014 ";
+}
+
+p.claim::before {
+  counter-increment: claim;
+  content: "Afirmação " counter(claim) " \2014 ";
+}
+
+p.claim[data-attribution]::before {
+  content: "Afirmação " counter(claim) " (" attr(data-attribution) ")  \2014 ";
+}

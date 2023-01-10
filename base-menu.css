@@ -1,48 +1,69 @@
-html, body{
-    width: 100%;
-    height: 100%;
+html,
+body {
+  width: 100%;
+  height: 100%;
 }
-#home-top-menu{
-    display: flex; /* make it flexbox*/
-    align-items: center; /* vertically align at center*/
-    width: 100%;
-    height: 20px;
-    /* background-image: ; */
+#home-top-menu {
+  display: flex; /* make it flexbox*/
+  align-self: left;
+  align-items: center; /* vertically align at center*/
+  width: 90%;
+  height: 100px;
+  /* background-image: ; */
 }
 
 #home-top-menu > * {
-    /* https: //stackoverflow.com/questions/6507014/how-to-space-the-children-of-a-div-with-css */
-    /* separate all children of home-top-menu divs*/
-    display: block;
-    margin: 10px;
+  /* https: //stackoverflow.com/questions/6507014/how-to-space-the-children-of-a-div-with-css */
+  /* separate all children of home-top-menu divs*/
+  display: block;
+  margin: 10px;
 }
 
-#home-top-button{
-    background-color: grey;
-    width: 20%;
-    border: 3px solid black;
+#home-top-button {
+  background-color: grey;
+  width: 20%;
+  border: 3px solid black;
 }
 
-#highlighted-article-heading{
-    margin-top: 2.5%; /* of the entire page*/
-    border-top: 1px double lightgray;
-    border-bottom: 1px double lightgray;
+#highlighted-article-heading {
+  margin-top: 2.5%; /* of the entire page*/
+  border-top: 1px double lightgray;
+  border-bottom: 1px double lightgray;
+}
+
+#search-bar{
+    width: 30%;
+    display: flex;
+    align-items: center;
+    position: sticky;
+    left: 80%; 
+    /*sticky: positions relative to parent div, never letting the content exceed the parent's borders*/
+    /*effectively moves by min(80%, M) where M is the maximum so that the content exceed the parent*/
 }
 
 /* Make images fit inside div while preserving aspect ration */
-div > img{
-    width: auto;
-    height: auto;
-    max-height: 100%;
-    max-width: 100%; /* to be contained inside div*/
+div > img {
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  max-width: 100%; /* to be contained inside div*/
 }
+
 /* Make all images inside buttons fit inside the button's parent div while preserving aspect ration */
-div > button > img{
-    width: auto;
-    height: auto;
-    max-height: 100%;
-    max-width: 100%;
-    /* to be contained inside div*/
+div > button > img {
+  width: auto;
+  height: auto;
+  max-height: 100%;
+  max-width: 100%;
+  /* to be contained inside div*/
 }
 
-
+/*displaying code*/
+pre,
+code,
+#pseudocode {
+  background-color: rgba(160, 160, 160, 0.095);
+  border: 1px solid rgb(0, 0, 0);
+  display: block;
+  padding: 20px;
+}

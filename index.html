@@ -11,9 +11,17 @@
 
     <body>
         <div>
-            <h1 class="Home title">Tópicos em matemática: um blog</h1>
+            <h1 class="home-title">Tópicos em matemática: um blog</h1>
         </div>
         <div id="home-top-menu" align="left">
+            <div id="home-top-button" align="center">
+                <a
+                    href="index.html"
+                    style="text-decoration: none; color: black"
+                >
+                    Home
+                </a>
+            </div>
             <div id="home-top-button" align="center">
                 <a
                     href="explorer.html"
@@ -24,23 +32,14 @@
             </div>
             <div id="home-top-button" align="center">
                 <a
-                    href="explorer.html"
+                    href="about.html"
                     style="text-decoration: none; color: black"
                 >
                     Sobre
                 </a>
             </div>
-            <div
-                style="
-                    position: absolute;
-                    width: 40%;
-                    left: 60%;
-                    display: flex;
-                    align-items: center; ;
-                "
-            >
-                <div>
-                    <form action="" style="width: 80%">
+            <div id="search-bar">
+                    <form action="" style="width: fit-content;">
                         <input
                             type="text"
                             name=""
@@ -48,20 +47,33 @@
                             placeholder="Procure um tópico aqui"
                         />
                     </form>
-                </div>
-                <div style="width: 5%; border: 1px solid grey">
-                    <button>
-                        <img
-                            src="assets/search-icon.png"
-                            alt="search icon"
-                        />
-                    </button>
-                </div>
+                    <!--Search icon (magnifying glass)-->
+                    <div style="width: 8%; border: 1px solid grey">
+                        <button>
+                            <img
+                                src="assets/search-icon.png"
+                                alt="search icon"
+                            />
+                        </button>
+                    </div>
             </div>
         </div>
-        <div>
+        <div id="featured-articles">
             <div id="highlighted-article-heading">
-                <h2>Artigo destacado</h2>
+                <h2>Artigos destacados</h2>
+            </div>
+            <div>
+                <h3>Teoria dos grafos</h3>
+            </div>
+            <div style="margin-top: 10px;">
+                <ul>
+                    <li>
+                        <a href="/home/igor/programming-projects/personal-math-site/post-dfs-path-count"> Usando <em>Depth-First-Search</em> para contar caminhos com uma fonte específica em grafos não direcionados.</a>
+                    </li>
+                </ul>
+            </div>
+            <div>
+                <h3>Análise Real e Espaços Métricos</h3>
             </div>
             <!--TODO create javascript code to select the HTML of an article and put it here-->
         </div>

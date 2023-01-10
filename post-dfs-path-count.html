@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="base-menu.css" />
+    <script
+      type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+    ></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+    <title>Contando caminhos com DFS</title>
+
+    <link rel="stylesheet" href="article.css" />
+    <link rel="stylesheet" href="base-menu.css" />
+    <!--overwrite styles for article page (article.css)-->
+  </head>
+  <body>
+    <!--START OF MAIN MENU HTML-->
+    <div>
+      <h1 class="home-title">Tópicos em matemática: um blog</h1>
+    </div>
+    <div id="home-top-menu" align="left">
+      <div id="home-top-button" align="center">
+        <a href="index.html" style="text-decoration: none; color: black">
+          Home
+        </a>
+      </div>
+      <div id="home-top-button" align="center">
+        <a href="explorer.html" style="text-decoration: none; color: black">
+          Explorar
+        </a>
+      </div>
+      <div id="home-top-button" align="center">
+        <a href="about.html" style="text-decoration: none; color: black">
+          Sobre
+        </a>
+      </div>
+      <div id="search-bar">
+        <form action="" style="width: fit-content">
+          <input
+            type="text"
+            name=""
+            id=""
+            placeholder="Procure um tópico aqui"
+          />
+        </form>
+        <!--Search icon (magnifying glass)-->
+        <div style="width: 8%; border: 1px solid grey">
+          <button>
+            <img src="assets/search-icon.png" alt="search icon" />
+          </button>
+        </div>
+      </div>
+    </div>
+    <!--END OF MAIN MENU HTML-->
+    <!---->
+    <!---->
+    <!---->
+    <h1>Usando DFS para contar caminhos em um grafo</h1>
+    <h2>Problema</h2>
+    <p>
+      O problema em questão é o problema E do
+      <em> AtCoder Begginer Contest 284 </em>, disponível em
+      <a>https://atcoder.jp/contests/abc284/tasks/abc284_e</a>.
+    </p>
+
+    <h2>Código</h2>
+    <pre>
+        <code>
+            #include &lt;bits/stdc++.h&gt;
+            using namespace std;
+
+            int paths = 0;
+            void dfs(vector&lt;vector&lt;int&gt;&gt;&amp; adj, int source, bool visited[]){
+                if (paths &gt;= (int)1e6){
+                    return;
+                }
+                paths += 1;
+                visited[source] = true;
+                for (int u: adj[source]){
+                    if (!visited[u]){
+                        dfs(adj, u, visited);
+                    }
+                }
+                visited[source] = false; // so it can be used again
+            }
+
+            int main(){
+                int n, m;
+                cin &gt;&gt; n &gt;&gt; m;
+                bool visited[n] = {false};
+                vector&lt;vector&lt;int&gt;&gt; adj(n);
+            
+                int u, v;
+                for (int i = 0; i &lt; m; i++){
+                    cin &gt;&gt; u &gt;&gt; v;
+                    --u; --v;
+                    adj[u].emplace_back(v);
+                    adj[v].emplace_back(u);
+                }
+            
+                dfs(adj, 0, visited);
+                cout &lt;&lt; paths;
+            }
+        </code>
+    </pre>
+
+    <h2>Verificando a corretude do algoritmo</h2>
+    <p>
+      Podemos facilmente reduzir para o seguinte pseudocódigo (considerando um
+      grafo não direcionado):
+    </p>
+    <div id="pseudocode">
+      <p>function dfs(u)</p>
+      <p>&emsp;$paths \gets paths + 1$</p>
+      <p>&emsp;$visited[u] \gets true$</p>
+      <p>&emsp;for $v$ in the adjacency of $u$</p>
+      <p>&emsp;&emsp;if $visited[v] = false$</p>
+      <p>&emsp;&emsp;&emsp;dfs(v)</p>
+      <p>&emsp;$visited[u] \gets false$</p>
+      <p>dfs(s)</p>
+    </div>
+
+    <h3>Demonstração</h3>
+    <p>
+      Para todo grafo $G$ e para todo vértice $s$ desse grafo, considere $G_s$ o
+      grafo obtido removendo/desconsiderando o vértice $s$ e todas as suas
+      arestas.
+    </p>
+    <strong
+      ><p>
+        Lema 1: o vetor $visited$, que determina qual subgrafo o algoritmo deve
+        considerar, é invariante em relação a aplicação da $dfs$: é o mesmo
+        antes e depois da execução da função**Lema 1: o vetor $visited$, que
+        determina qual subgrafo o algoritmo deve considerar, é invariante em
+        relação a aplicação da $dfs$: é o mesmo antes e depois da execução da
+        função
+      </p></strong
+    >
+    <p>
+      Prova: a prova segue diretamente por indução. Suponha que vale para todo
+      vértice de todo grafo com $m \leq n_0$ vértices, e seja $G$ um grafo com
+      $n_0 + 1$ vértices e $s$ o vértice inicial sobre o qual chamamos a função.
+      Seja $(v_i)_{1 \leq i \leq k}$ os vizinhos de $s$, na ordem em que serão
+      visitados no algoritmo. Afirmamos que $dfs(v_i)$ não muda o estado do
+      vetor $visited$, para cada $1 \leq i \leq k$.
+    </p>
+    <p>
+      Procedemos por indução novamente: o caso $i = 1$ segue pela hipótese de
+      indução anterior, pois o $dfs(v_1)$ age sobre $G_s$, uma vez que $s$ foi
+      marcado como visitado anteriormente, e $G_s$ possui $n_0$ vértices. Por
+      outro lado, se $dfs(v_j)$ não altera $visited$ para cada $1 \leq j \leq i
+      < k$ então $dfs(v_{i+1})$ age sobre o mesmo subgrafo $G_s$ que todas as
+      outras execuções de $dfs$, e portanto por esse subgrafo possuir $n_0$
+      vértices o vetor $visited$ não é alterado. Portanto, concluímos que
+      nenhuma mudança ao vetor $visited$ persiste ao final do loop interno.
+      Então, ao marcar $visited[s] = false$, ao final da $dfs$, voltamos ao
+      grafo original $G$, provando o passo indutivo.
+    </p>
+    <strong
+      ><p>
+        Teorema 1: Cada caminho partindo de $s$ para qualquer outro vértice, que
+        não passe por um mesmo vértice duas vezes, é contado exatamente uma vez
+        nesse algoritmo.
+      </p></strong
+    >
+    <p>
+      Prova: note que um caminho desse tipo é uma sequência da forma $(s, a_1,
+      \dotsc, a_n)$ onde $n=0$ (o caminho trivial, que contém apenas a origem)
+      ou $a_1, \dotsc, a_n \in V\setminus\{s\}$ são vértices distintos do
+      subgrafo obtido removendo $s$, e $(a_i, a_{i+1}) \in E$ (é uma aresta do
+      grafo), $\forall 0 \leq i < n$. Note que foi considerado $a_0 = s$ (por
+      conveniência).
+    </p>
+    <p>
+      Seja $f(s, G)$ a quantidade desses caminhos no grafo $G$, e $G_s$ o
+      subgrafo induzido por retirar o vértice $s$ e todas as suas arestas.
+      Concluímos que cada uma dessas sequências $a_1, \dotsc, a_n$ é um caminho
+      possível em $G_s$ que começa em um vértice na adjacência de $s$, e
+      reciprocamente todos os caminhos possíveis com 2 ou mais vértices é dessa
+      forma. Em outras palavras: $$f(s, G) = 1 + \sum_{(s, a) \in E}\ f(a,
+      G_s)$$
+    </p>
+    <p>
+      Podemos provar agora o teorema por indução. O caso $|V| = 1$ é trivial,
+      pois o algoritmo apenas incrementa $paths$ de $0$ para $1$ e termina sua
+      execução, devido à lista de adjacência vazia.
+    </p>
+    <p>
+      Suponha que o algoritmo vale para todo grafo com $m \leq n_0$ vértices, e
+      que $G$ é um grafo de $n_0 + 1$ vértices. Então, como $s$ foi marcado como
+      visitado no início do algoritmo, nenhuma aresta com $s$ como extremo será
+      considerada, e portanto podemos a primeira execução do loop interno como
+      agindo sobre $G_s$.
+      <strong
+        >Pelo lema 1, entretanto, $dfs$ não modifica o vetor de visitados, e
+        portanto segue que todas as chamadas da função no loop agem sobre
+        $G_s$</strong
+      >
+      - ou seja, são independentes entre si.
+    </p>
+    <p>
+      Porém, pela hipótese de indução, como $G_s$ tem $n_0$ vértices, temos que
+      $dfs(v)$ incrementa $paths$ pela quantidade de caminhos de $G_s$ que
+      iniciam em $v$ e não repetem vértices: que, por definição, é $f(v, G_s)$.
+      Portanto, como $paths$ é incrementado por 1 unidade logo no início da
+      função, e como o loop ocorre sobre a adjacência de $s$, $paths$ é
+      incrementado exatamente $1 + \sum_{(s, a) \in E}\ f(a, G_s) = f(s, G)$
+      vezes, como queríamos demonstrar.
+    </p>
+  </body>
+</html>
