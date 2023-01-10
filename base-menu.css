@@ -23,6 +23,12 @@ html, body{
     border: 3px solid black;
 }
 
+#highlighted-article-heading{
+    margin-top: 2.5%; /* of the entire page*/
+    border-top: 1px double lightgray;
+    border-bottom: 1px double lightgray;
+}
+
 /* Make images fit inside div while preserving aspect ration */
 div > img{
     width: auto;

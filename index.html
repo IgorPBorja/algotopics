@@ -1,40 +1,69 @@
-<!-- Home page-->    
+<!-- Home page-->
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="home.css">
-    <title>Document</title>
-</head>
+    <head>
+        <meta charset="UTF-8" />
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="base-menu.css" />
+        <title>Home</title><html> 
+    </head>
 
-<body>
-    <div>
-        <h1 class="Home title">Tópicos em matemática: um blog</h1>
-    </div>
-    <div id="home-top-menu" align="left">
-        <div id="home-top-button" align="center">
-            <a href="explorer.html" style="text-decoration: none; color: black;">
-                Explorar
-            </a>
+    <body>
+        <div>
+            <h1 class="Home title">Tópicos em matemática: um blog</h1>
         </div>
-        <div id="home-top-button" align="center">
-            <a href="explorer.html" style="text-decoration: none; color: black;">
-                Sobre
-            </a>
-        </div>
-        <div style="position: absolute; width: 40%; left: 60%; display: flex; align-items: center;;">
-            <div><form action="" style="width: 80%">
-                <input type="text" name="" id="" 
-                placeholder="Procure um tópico aqui">
-            </form></div>
-            <div style="width: 10%;">
-                <button>
-                    <img src="assets/search-icon.png" alt="search icon">
-                </button>
+        <div id="home-top-menu" align="left">
+            <div id="home-top-button" align="center">
+                <a
+                    href="explorer.html"
+                    style="text-decoration: none; color: black"
+                >
+                    Explorar
+                </a>
+            </div>
+            <div id="home-top-button" align="center">
+                <a
+                    href="explorer.html"
+                    style="text-decoration: none; color: black"
+                >
+                    Sobre
+                </a>
+            </div>
+            <div
+                style="
+                    position: absolute;
+                    width: 40%;
+                    left: 60%;
+                    display: flex;
+                    align-items: center; ;
+                "
+            >
+                <div>
+                    <form action="" style="width: 80%">
+                        <input
+                            type="text"
+                            name=""
+                            id=""
+                            placeholder="Procure um tópico aqui"
+                        />
+                    </form>
+                </div>
+                <div style="width: 5%; border: 1px solid grey">
+                    <button>
+                        <img
+                            src="assets/search-icon.png"
+                            alt="search icon"
+                        />
+                    </button>
+                </div>
             </div>
         </div>
-    </div>
-</body>
+        <div>
+            <div id="highlighted-article-heading">
+                <h2>Artigo destacado</h2>
+            </div>
+            <!--TODO create javascript code to select the HTML of an article and put it here-->
+        </div>
+    </body>
 </html>
