@@ -14,11 +14,12 @@
       tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
       });
     </script>
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
     <title>Contando caminhos com DFS</title>
 
     <link rel="stylesheet" href="article.css" />
-    <link rel="stylesheet" href="base-menu.css" />
     <!--overwrite styles for article page (article.css)-->
+    <link rel="stylesheet" href="base-menu.css" />
   </head>
   <body>
     <!--START OF MAIN MENU HTML-->
@@ -214,5 +215,32 @@
       incrementado exatamente $1 + \sum_{(s, a) \in E}\ f(a, G_s) = f(s, G)$
       vezes, como queríamos demonstrar.
     </p>
+
+    <div id="comment-area">
+      <h1>Comentários</h1>
+      <form action="">
+        <div style="display: flex; flex-direction: column; width: fit-content">
+          <textarea
+            name="comment-space"
+            id="comment-space"
+            cols="50"
+            rows="10"
+          ></textarea>
+          <input
+            style="
+              width: 40%;
+              margin-top: 5%;
+              margin-left: auto;
+              margin-right: 0;
+            "
+            type="submit"
+            value="Submit here"
+          />
+        </div>
+      </form>
+      <div id="comment-section" style="display: block"></div>
+    </div>
+    <!-- script for displaying comments -->
+    <script src="./retrieve-comments.js"></script>
   </body>
 </html>
