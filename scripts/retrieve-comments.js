@@ -1,19 +1,9 @@
-const MAX_DISPLAYED_COMMENTS = 20;
-const MAX_LEN_ID = 7;
-/*
-JSON structure of comment:
-{
-  id: int,
-  timestamp: date,
-  content: string,
-  email: string
-}
-*/
+const MAX_DISPLAYED_COMMENTS = 20
 
-function generateCommentObject(commentJSON) {
-  const email = commentJSON["email"];
-  const timestamp = commentJSON["timestamp"];
-  const content = commentJSON["content"];
+function generateCommentObject(comment_JSON) {
+  const email = comment_JSON["email"];
+  const timestamp = comment_JSON["timestamp"];
+  const content = comment_JSON["content"];
 
   const header = document.createElement("h4");
   header.appendChild(
@@ -36,34 +26,52 @@ function generateCommentObject(commentJSON) {
   return main_div;
 }
 
-// Using fetch API
-async function display_comments(element_id) {
-  const global_info = await fetch("./global_info/globals.json")
+function displayComment(comment_area_id, comment_JSON){
+  var comment_section = document.getElementById(comment_area_id);
+  var comment_div = generateCommentObject(comment_JSON);
+  comment_section.appendChild(comment_div);
+}
+
+async function selectJSONFilepath(page_link) {
+  // page_link = my_page_name.html
+  const links = await fetch("links.json")
     .then((response) => response.json())
     .then((data) => {
       return data;
     });
-  const total_comments = global_info["total_comments"];
+  for (var path in links) {
+    if (links[path] == page_link) {
+      return path;
+    }
+  }
+  return "";
+}
 
-  for (let i = 0; i < Math.min(MAX_DISPLAYED_COMMENTS, total_comments); i++) {
-    comment_id =
-      "0".repeat(MAX_LEN_ID - String(total_comments - i).length) +
-      String(total_comments - i); // total_comments - i ==> selecting last comments
-
-    path = "./comments/id_" + comment_id + ".json";
-    var commentJSON;
-    const _ = await fetch(path)
-      .then((response) => response.json())
-      .then((data) => {
-        console.log(data); // data is the data of the json response
-        // thus it's a Javascript object representing that JSON
-        commentJSON = data;
-      });
-    const section = document.getElementById(element_id);
-    const comment_HTMLObject = generateCommentObject(commentJSON);
-    section.appendChild(comment_HTMLObject);
+async function retrieveLastKComments(json_filepath, k = MAX_DISPLAYED_COMMENTS){
+  console.log("json is ", json_filepath);
+  const parsed_json = await fetch(json_filepath)
+                      .then((response) => response.json())
+                      .then((data) => {return data;});
+  var ans = []
+  var i = 0;
+  for (index in parsed_json["comments"]){
+    if (index < k){
+      displayComment("comment-section", parsed_json["comments"][index]); // TODO remove constant
+    } else {
+      break;
+    }
   }
 }
 
-console.log("Successful initialization");
-display_comments("comment-section");
+async function main(){
+  // assumes link of the form http://IP/page-name.html
+  current_URL = document.URL.split("/")[document.URL.split("/").length - 1];
+
+  const json_filepath = await selectJSONFilepath(current_URL); // needs to wait for the fetch
+  console.assert(json_filepath != "", "Invalid JSON path");
+
+  // the ../ accounts for the fact that this script is in a folder and the htmls are not
+  retrieveLastKComments("../comments/" + json_filepath); // TODO remove constant
+}
+
+main();
