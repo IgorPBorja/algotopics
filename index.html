@@ -1,84 +1,43 @@
 <!-- Home page-->
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <link rel="stylesheet" href="base-menu.css" />
-        <script src="scripts/insert-page.js"></script>
-        <title>Home</title><html> 
-    </head>
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script
+      type="text/javascript"
+      src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"
+    ></script>
+    <script type="text/x-mathjax-config">
+      MathJax.Hub.Config({
+      tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]}
+      });
+    </script>
+    <script src="https://requirejs.org/docs/release/2.3.5/minified/require.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
+    <title>Home</title>
 
-    <body>
-        <div>
-            <h1 class="home-title">Tópicos em matemática: um blog</h1>
-        </div>
-        <div id="home-top-menu" align="left">
-            <div id="home-top-button" align="center">
-                <a
-                    href="index.html"
-                    style="text-decoration: none; color: black"
-                >
-                    Home
-                </a>
-            </div>
-            <div id="home-top-button" align="center">
-                <a
-                    href="explorer.html"
-                    style="text-decoration: none; color: black"
-                >
-                    Explorar
-                </a>
-            </div>
-            <div id="home-top-button" align="center">
-                <a
-                    href="about.html"
-                    style="text-decoration: none; color: black"
-                >
-                    Sobre
-                </a>
-            </div>
-            <div id="search-bar">
-                    <form action="" style="width: fit-content;">
-                        <input
-                            type="text"
-                            name=""
-                            id=""
-                            placeholder="Procure um tópico aqui"
-                        />
-                    </form>
-                    <!--Search icon (magnifying glass)-->
-                    <div style="width: 8%; border: 1px solid grey">
-                        <button>
-                            <img
-                                src="assets/search-icon.png"
-                                alt="search icon"
-                            />
-                        </button>
-                    </div>
-            </div>
-        </div>
-        <div id="featured-articles">
-            <div id="highlighted-article-heading">
-                <h2>Artigos destacados</h2>
-            </div>
-            <div>
-                <h3>Teoria dos grafos</h3>
-            </div>
-            <div style="margin-top: 10px;">
-                <ul id="graph-theory"> <!--Lista de postagens de teoria dos grafos -->
-                </ul>
-            </div>
-            <div>
-                <h3>Análise Real e Espaços Métricos</h3>
-            </div>
-            <div style="margin-top: 10px;">
-                <ul id="real-analysis"> <!--Lista de postagens de análise real -->
+    <link rel="stylesheet" href="article.css" />
+    <!--overwrite styles for article page (article.css)-->
+    <link rel="stylesheet" href="base-menu.css" />
+  </head>
 
-                </ul>
-            </div>
-            <!--TODO create javascript code to select the HTML of an article and put it here-->
-        </div>
-    </body>
+  <body>
+    <span id="top-menu"> </span>
+    <script>
+      $("#top-menu").load("/templates/top-menu.html");
+      console.log("Top menu loaded");
+    </script>
+
+    <div id="featured-articles">
+      <div id="highlighted-article-heading">
+        <h2>Artigos destacados</h2>
+      </div>
+      <div id="sections"></div>
+    </div>
+
+    <!--Specific to HOME -->
+    <script src="/scripts/insert-page.js"></script>
+  </body>
 </html>
