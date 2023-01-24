@@ -21,18 +21,43 @@
     <link rel="stylesheet" href="styles/article.css" />
     <!--overwrite styles for article page (article.css)-->
     <link rel="stylesheet" href="styles/base-menu.css" />
+    <script src="scripts/insert-page.js" defer></script>
   </head>
 
   <body>
-    <span id="top-menu"> </span>
-    <script>
-      $("#top-menu").load("templates/top-menu.html");
-      // fix relative paths (since index.html is at the top level)
-      $("#home-link").href = "index.html";
-      $("#explorer-link").href = "explorer.html";
-      $("#about-link").href = "about.html";
-      $("#search-icon").src = "assets/search-icon.png"
-    </script>
+    <span id="top-menu"> 
+      <div>
+        <h1 id="home-title">Tópicos em matemática: um blog</h1>
+      </div>
+      <div id="home-top-menu" align="left">
+        <div id="home-top-button" align="center">
+          <a id="home-link" href="../index.html" style="text-decoration: none; color: black">
+            Home
+          </a>
+        </div>
+        <div id="home-top-button" align="center">
+          <a id="explorer-link" href="../explorer.html" style="text-decoration: none; color: black">
+            Explorar
+          </a>
+        </div>
+        <div id="home-top-button" align="center">
+          <a id="about-link" href="../about.html" style="text-decoration: none; color: black">
+            Sobre
+          </a>
+        </div>
+        <div id="search-bar">
+          <form action="" style="width: fit-content">
+            <input type="text" name="" id="" placeholder="Procure um tópico aqui" />
+          </form>
+          <!--Search icon (magnifying glass)-->
+          <div style="width: 8%; border: 1px solid grey">
+            <button>
+            <img id="search-icon" src="../assets/search-icon.png" alt="search icon" />
+            </button>
+          </div>
+        </div>
+      </div>
+    </span>
 
     <div id="featured-articles">
       <div id="highlighted-article-heading">
@@ -42,6 +67,5 @@
     </div>
 
     <!--Specific to HOME -->
-    <script src="scripts/insert-page.js"></script>
   </body>
 </html>

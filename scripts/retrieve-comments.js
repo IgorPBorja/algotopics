@@ -83,4 +83,4 @@ async function main() {
   retrieveLastKComments(json_filepath, "../");
 }
 
-main();
+main()

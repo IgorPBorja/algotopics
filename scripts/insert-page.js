@@ -24,8 +24,8 @@ where m_i is the number of articles of the i-th section.
 var SECTIONS_LOADED = false; // global flag
 const SECTION_AREA_ID = "sections"; // see index.html
 
-async function load_sections() {
-  sections = await fetch("../global_info/sections.json")
+async function load_sections(path) {
+  sections = await fetch(path)
     .then((response) => response.json())
     .then((data) => {
       return data;
@@ -83,9 +83,10 @@ async function processPageLinks(path) {
   }
 }
 
-async function main() {
-  await load_sections();
-  await processPageLinks("../global_info/pages.json");
+window.onload = async function main() {
+  // this is being executed from index.html
+  await load_sections("global_info/sections.json");
+  await processPageLinks("global_info/pages.json");
 }
 
 main();
