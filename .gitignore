@@ -1,0 +1,12 @@
+# Ignore tmp files
+tmp
+
+# Ignore testing files (for now)
+tests
+
+# Ignore dev-templates directory
+# (as they serve only to quickly generate new articles or content when writing code)
+dev-templates
+
+# Ignore markdowns-pdfs directory
+markdowns-pdfs

@@ -1,5 +1,5 @@
 const MAX_DISPLAYED_COMMENTS = 20;
-const ARTICLES_FOLDER = "/algotopics.github.io/articles";
+const ARTICLES_FOLDER = "/algotopics/articles";
 
 function generateCommentObject(comment_JSON) {
   const email = comment_JSON["email"];
@@ -35,7 +35,7 @@ function displayComment(comment_area_id, comment_JSON) {
 
 async function selectJSONFilepath(page_link) {
   // page_link = my_page_name.html
-  const links = await fetch("/algotopics.github.io/global_info/links.json")
+  const links = await fetch("/algotopics/global_info/links.json")
     .then((response) => response.json())
     .then((data) => {
       return data;

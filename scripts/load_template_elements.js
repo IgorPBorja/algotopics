@@ -8,10 +8,7 @@ function load_templates(template_map) {
 }
 
 const templates = new Map();
-templates.set("#top-menu", "/algotopics.github.io/templates/top-menu.html");
-templates.set(
-  "#comment-area",
-  "/algotopics.github.io/templates/comment-area.html"
-);
+templates.set("#top-menu", "/algotopics/templates/top-menu.html");
+templates.set("#comment-area", "/algotopics/templates/comment-area.html");
 
 load_templates(templates);
