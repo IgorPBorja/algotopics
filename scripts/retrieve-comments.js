@@ -38,7 +38,7 @@ async function selectJSONFilepath(page_link) {
 
   // this query on links.json will get paths of the form "articles/filename.html"
   // without the other folder prefixes
-  const links = await fetch("../global_info/links.json")
+  const links = await fetch("./global_info/links.json")
     .then((response) => response.json())
     .then((data) => {
       return data;
@@ -80,7 +80,7 @@ async function main() {
   console.assert(json_filepath != "", "Invalid JSON path");
   // this request is being made from the scripts folder
 
-  retrieveLastKComments(json_filepath, "../");
+  retrieveLastKComments(json_filepath, "./");
 }
 
 main();

@@ -12,4 +12,4 @@ templates.set("#top-menu", "templates/top-menu.html");
 templates.set("#comment-area", "templates/comment-area.html");
 
 // load this on files of the form "articles/myPost1.html"
-load_templates(templates, "../");
+load_templates(templates, "./");
