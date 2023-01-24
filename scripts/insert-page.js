@@ -89,4 +89,3 @@ window.onload = async function main() {
   await processPageLinks("global_info/pages.json");
 }
 
-main();
