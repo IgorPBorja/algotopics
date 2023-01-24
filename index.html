@@ -18,7 +18,7 @@
     <script src="https://code.jquery.com/jquery-3.6.3.min.js"></script>
     <title>Home</title>
 
-    <link rel="stylesheet" href="stlyes/article.css" />
+    <link rel="stylesheet" href="styles/article.css" />
     <!--overwrite styles for article page (article.css)-->
     <link rel="stylesheet" href="styles/base-menu.css" />
   </head>
@@ -27,7 +27,11 @@
     <span id="top-menu"> </span>
     <script>
       $("#top-menu").load("templates/top-menu.html");
-      console.log("Top menu loaded");
+      // fix relative paths (since index.html is at the top level)
+      $("#home-link").href = "index.html";
+      $("#explorer-link").href = "explorer.html";
+      $("#about-link").href = "about.html";
+      $("#search-icon").src = "assets/search-icon.png"
     </script>
 
     <div id="featured-articles">
