@@ -25,7 +25,7 @@ var SECTIONS_LOADED = false; // global flag
 const SECTION_AREA_ID = "sections"; // see index.html
 
 async function load_sections() {
-  sections = await fetch("/algotopics/global_info/sections.json")
+  sections = await fetch("../global_info/sections.json")
     .then((response) => response.json())
     .then((data) => {
       return data;
@@ -85,7 +85,7 @@ async function processPageLinks(path) {
 
 async function main() {
   await load_sections();
-  await processPageLinks("/algotopics/global_info/pages.json");
+  await processPageLinks("../global_info/pages.json");
 }
 
 main();

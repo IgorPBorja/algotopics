@@ -1,4 +1,39 @@
 # Descrição: agrupando informação de forma acessível
+## File-tree: estrutura dos arquivos
+A atual estrutura de arquivos é da seguinte forma:
+```
+- root
+    - index.html 
+    - styles
+        - base-menu.css 
+        - article.css 
+    - templates
+        - top-menu.html
+        - comment-are.html 
+    - scripts
+        - insert-page.js 
+        - load_template_element.js
+        - retrieve-comments.js
+    - global_info
+        - globals.json 
+        - links.json 
+        - pages.json 
+        - sections.json 
+    - comments 
+        ...
+        <comments' JSON files here>
+        ... 
+    - articles 
+        ... 
+        <articles' HTML files here>
+        ...
+    - assets 
+        ... 
+        <image files here>
+        ...
+```
+
+
 ## Estrutura de links e da disposição de artigos
 
 ## Estrutura dos comentários

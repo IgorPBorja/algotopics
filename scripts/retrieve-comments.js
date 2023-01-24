@@ -1,5 +1,5 @@
 const MAX_DISPLAYED_COMMENTS = 20;
-const ARTICLES_FOLDER = "/algotopics/articles";
+const ARTICLES_FOLDER = "articles";
 
 function generateCommentObject(comment_JSON) {
   const email = comment_JSON["email"];
@@ -35,7 +35,10 @@ function displayComment(comment_area_id, comment_JSON) {
 
 async function selectJSONFilepath(page_link) {
   // page_link = my_page_name.html
-  const links = await fetch("/algotopics/global_info/links.json")
+
+  // this query on links.json will get paths of the form "articles/filename.html"
+  // without the other folder prefixes
+  const links = await fetch("../global_info/links.json")
     .then((response) => response.json())
     .then((data) => {
       return data;
@@ -50,9 +53,10 @@ async function selectJSONFilepath(page_link) {
 
 async function retrieveLastKComments(
   json_filepath,
+  prefix = "",
   k = MAX_DISPLAYED_COMMENTS
 ) {
-  const parsed_json = await fetch(json_filepath)
+  const parsed_json = await fetch(prefix + json_filepath)
     .then((response) => response.json())
     .then((data) => {
       return data;
@@ -67,14 +71,16 @@ async function retrieveLastKComments(
 }
 
 async function main() {
-  // assumes link of the form https://IP/path/to/folder/page-name.html
+  // assumes link of the form https://path/to/folder/articles/page-name.html
   current_URL = document.URL.split("/")[document.URL.split("/").length - 1];
   current_URL = current_URL.split("?")[0]; // eliminate form information
   current_URL = ARTICLES_FOLDER + "/" + current_URL; // prepend folder path
 
   const json_filepath = await selectJSONFilepath(current_URL); // needs to wait for the fetch
   console.assert(json_filepath != "", "Invalid JSON path");
-  retrieveLastKComments(json_filepath);
+  // this request is being made from the scripts folder
+
+  retrieveLastKComments(json_filepath, "../");
 }
 
 main();

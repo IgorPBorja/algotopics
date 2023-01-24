@@ -1,13 +1,13 @@
 {
   "graph-theory": [
     {
-      "/algotopics/articles/post-dfs-path-count.html": [
+      "articles/post-dfs-path-count.html": [
         "Usando <em>Depth-First-Search</em> para contar caminhos com uma fonte específica em grafos não direcionados.",
         "Description here"
       ]
     },
     {
-      "/algotopics/articles/graph-basics.html": [
+      "articles/graph-basics.html": [
         "Introdução a algoritmos em grafos com <em>Breadth-First Search</em>.",
         "Description here"
       ]
