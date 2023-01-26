@@ -10,3 +10,9 @@ dev-templates
 
 # Ignore markdowns-pdfs directory
 markdowns-pdfs
+
+# Ignore resource-log files
+resource_logs
+
+# __pycache__
+__pycache__
