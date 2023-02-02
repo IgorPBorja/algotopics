@@ -13,5 +13,13 @@
       ]
     }
   ],
-  "real-analysis": [{}]
+  "real-analysis": [{}],
+  "number-theory": [
+    {
+      "articles/gcd_on_blackboard.html":[
+        "Algoritmos com gcd e soma de prefixos: AtCoder Beginner Contest 125 C",
+        "Description here"
+      ]
+    }
+  ]
 }
