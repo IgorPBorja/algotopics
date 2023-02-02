@@ -3,6 +3,12 @@ body {
   counter-reset: theorem;
   counter-reset: claim;
 }
+
+#content{
+  padding-left: 3%;
+  padding-right: 5%;
+}
+
 h1 {
   /* Reset the counter named theorem each time a h1 obj is instantiated*/
   counter-reset: theorem;
@@ -27,4 +33,14 @@ p.claim::before {
 
 p.claim[data-attribution]::before {
   content: "Afirmação " counter(claim) " (" attr(data-attribution) ")  \2014 ";
+}
+
+/*displaying code*/
+pre,
+code,
+#pseudocode {
+  background-color: rgba(160, 160, 160, 0.095);
+  border: 1px solid rgb(0, 0, 0);
+  display: block;
+  padding: 20px;
 }

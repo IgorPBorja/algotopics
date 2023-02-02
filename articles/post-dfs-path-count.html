@@ -23,11 +23,11 @@
     <link rel="stylesheet" href="../styles/base-menu.css" />
   </head>
   <body>
-    <span id="top-menu"> </span>
+    <div id="top-menu"> </div>
     <!---->
     <!---->
     <!---->
-    <span id="content">
+    <div id="content">
       <h1>Usando DFS para contar caminhos em um grafo</h1>
       <h2>Problema</h2>
       <p>
@@ -99,13 +99,13 @@
         o grafo obtido removendo/desconsiderando o vértice $s$ e todas as suas
         arestas.
       </p>
-      <strong
-        ><p>
+      <p>
+        <strong>
           Lema 1: o vetor $visited$, que determina qual subgrafo o algoritmo
           deve considerar, é invariante em relação a aplicação da $dfs$: é o
           mesmo antes e depois da execução da função
-        </p></strong
-      >
+        </strong>
+      </p>
       <p>
         Prova: a prova segue diretamente por indução. Suponha que vale para todo
         vértice de todo grafo com $m \leq n_0$ vértices, e seja $G$ um grafo com
@@ -126,13 +126,12 @@
         Então, ao marcar $visited[s] = false$, ao final da $dfs$, voltamos ao
         grafo original $G$, provando o passo indutivo.
       </p>
-      <strong
-        ><p>
+      <p><strong>
           Teorema 1: Cada caminho partindo de $s$ para qualquer outro vértice,
           que não passe por um mesmo vértice duas vezes, é contado exatamente
           uma vez nesse algoritmo.
-        </p></strong
-      >
+        </strong>  
+      </p>
       <p>
         Prova: note que um caminho desse tipo é uma sequência da forma $(s, a_1,
         \dotsc, a_n)$ onde $n=0$ (o caminho trivial, que contém apenas a origem)
@@ -177,8 +176,8 @@
         $paths$ é incrementado exatamente $1 + \sum_{(s, a) \in E}\ f(a, G_s) =
         f(s, G)$ vezes, como queríamos demonstrar.
       </p>
-    </span>
-    <span id="comment-area"></span>
+    </div>
+    <div id="comment-area"></div>
 
     <script src="../scripts/load_template_elements.js"></script>
   </body>
